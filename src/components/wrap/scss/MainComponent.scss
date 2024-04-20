@@ -1,0 +1,249 @@
+// $url : 'http://localhost:3001/';
+ $url : 'http://127.0.0.1';
+ $url : 'http://192.168.136.104';
+ $url : '../../../..';
+/* 메인 */
+#main {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    #section1 {
+        width: 100%;
+        height: 300px;
+        background-color: #c9c;
+        .slide-container {
+            width:100%;
+            height: 100%;
+            overflow: hidden; // 100% 화면만 보임
+            .slide-content {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                .slide-wrap {   // 좌우이동슬라이ㅡㄷ 애니메이셔 ㄴ대상박스
+                    width: 100% * 17; 
+                    height: 100%;   
+                    position: relative; // 필수
+                    display: flex;      // 슬라이드 갯수만큼 한줄로 만들어줌 >> inline
+                    margin-left: -100%; // 좌측 마지막 슬라이드를 1칸 이동
+                    left: -100% * 1;
+                    .slide { // 슬라이드 대상
+                        width: 100%;
+                        height: 300px;
+                        background: url() no-repeat 50% 50%;
+                        background-size: cover;
+
+                        &.slide1 {
+                            background-position: 50% 30%;
+                            z-index: 3;
+                            a{
+                                span{
+                                    background-color: rgba(46, 14, 161, 0.9);
+                                }
+                            }
+                        }
+                        &.slide2 {
+                            background-position: 50% 0%;
+                            z-index: 2;
+                            a {
+                                span {
+                                    background-color: rgba(204, 85, 170, 0.9);
+                                }
+                            }
+                        }
+                        &.slide3 {
+                            background-position: 50% 30%;
+                            z-index: 1;
+                            a {
+                                span {
+                                    background-color: rgba(250, 120, 85, 0.9);
+                                }
+                            }
+                        }
+                        a {
+                            display: flex;
+                            width: 100%;
+                            height: 100%;
+                            align-items: center;
+                            span {
+                                width: 100%;
+                                height: 70px;
+                                background: rgba(85, 170, 204, 0.7);
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 28px;
+                                color:#fff;
+                                user-select: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+#main #section2 {width: 100%;height: 200px;display: flex;padding: 10px 0;user-select: none;}
+#main #section2 .left   {width: 33.333%;height: 100%;}
+#main #section2 .left  .container {width: 100%;height: 100%;position: relative;padding-top: 35px;}
+
+/* 공지사항 & 갤러리 박스 */
+/* 타이틀(버튼) */
+#main #section2 .left .container .title {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    padding: 0 0 0 10px;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 2;
+}
+#main #section2 .left   .container .title button {padding: 0 10px;border: 0;border-radius: 5px 5px 0 0;height: 36px;}
+
+/* 공지사항버튼 */
+#main #section2 .left   .container .title button.notice-btn {border: 1px solid #ccc;border-bottom: 1px solid transparent;background: #fff;cursor: default;}
+#main #section2 .left   .container .title button.notice-btn.on {border: 1px solid #ccc;background: #f3f3f3;cursor: pointer;}
+
+/* 갤러리버튼 */
+#main #section2 .left   .container .title button.gallery-btn {border: 1px solid #ccc;background: #f3f3f3;cursor: pointer;}
+#main #section2 .left   .container .title button.gallery-btn.on {border: 1px solid #ccc;border-bottom: 1px solid rgba(204,204,204, 0);background: #fff;cursor: default;}
+
+/* 콘텐츠(목록 내용) 공지사항 내용 & 갤러리 내용 */
+#main #section2 .left   .container .content {
+    width: 100%;
+    height: 145px;
+    background: #fff;
+    border: 1px solid #ccc;
+    position: relative;
+    z-index: 1;
+}
+/* 공지사항 박스 갤러리 박스 공통스타일 */
+#main #section2 .left   .container .content > div {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    background: #fff;
+}
+
+/* 공지사항 박스 개별스타일 */
+#main #section2 .left   .container .content   div.notice-box {
+    padding-top: 8px;
+}
+
+
+#main #section2 .left   .container .content   div.notice-box ul {width:100%;}
+#main #section2 .left   .container .content   div.notice-box ul li {
+    width: 100%;
+    line-height: 24.6px;
+    border-bottom: 1px dotted #eee;
+    padding-left: 13px;
+    position: relative;
+    display: flex;
+    justify-content: space-between; /* 공지내용 텍스트 왼쪽 / 날짜 오른쪽 */
+}
+#main #section2 .left   .container .content   div.notice-box ul li:last-child {border-bottom: 0;}
+#main #section2 .left   .container .content   div.notice-box ul li::before {
+    content: '';
+    width: 2px;
+    height: 2px;
+    background: #333;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+}
+
+/* 1. 줄바꿈 없이 한줄로 표기    white-space: nowrap */
+/* 2. 270픽셀 넘치는 텍스트 숨김 overflow: hidden */
+/* 3. 말줄임표 표기 text-overflow: ellipsis */
+#main #section2 .left   .container .content   div.notice-box ul li a {
+    font-size: 14px;
+    width: 270px;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#main #section2 .left   .container .content   div.notice-box ul li a:hover {text-decoration: underline;color:#90f}
+
+#main #section2 .left   .container .content   div.notice-box ul li span {color: #999;font-size: 13px;}
+
+#main #section2 .left   .container .content   div.notice-box.on {
+    display: none;
+}
+
+/* 갤러리 박스 개별스타일 */
+#main #section2 .left   .container .content   div.gallery-box {
+    background:#fff;    
+    display: none;
+}
+
+#main #section2 .left   .container .content   div.gallery-box.on {
+    background:#fff;    
+    display: block;
+}
+#main #section2 .left   .container .content   div.gallery-box ul {
+    width:100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+#main #section2 .left   .container .content   div.gallery-box ul li {width:33.333%;}
+#main #section2 .left   .container .content   div.gallery-box ul li a {margin:0 10px;display: block;overflow: hidden;}
+#main #section2 .left   .container .content   div.gallery-box ul li a img {width:100%;transition: all 0.3s;}
+#main #section2 .left   .container .content   div.gallery-box ul li a img:hover {transform: scale(1.1);}
+
+/* 이벤트 배너 */
+#main #section2 .center {width: 33.333%;height: 100%;background: #fff;padding: 0 0 0 10px;}
+#main #section2 .center .container {width: 100%;height: 100%;border: 0px solid #ccc;}
+#main #section2 .center .container .content {width: 100%;height: 100%;}
+#main #section2 .center .container .content a {
+    width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;
+    background: url(#{$url}/public/images/image4.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+#main #section2 .center .container .content a h3 {
+    font-size: 24px;font-weight: 600;
+    line-height: 50px;
+    background: rgba(150, 230, 0, 0.6);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
+#main #section2 .center .container .content a:hover h3 {color: #fff;}
+
+/* 바로가기 배너 */
+#main #section2 .right  {width: 33.333%;height: 100%;background: #fff;padding: 0 0 0 10px;}
+#main #section2 .right .container {width: 100%;height: 100%;border: 0px solid #ccc;}
+#main #section2 .right .container .content {width: 100%;height: 100%;}
+#main #section2 .right .container .content ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;  /* <= 세로정렬 / 가로정렬 => flex-flow: row nowrap;*/
+    justify-content: space-between;
+}
+#main #section2 .right .container .content ul li {width: 100%;}
+#main #section2 .right .container .content ul li a {
+    display: flex;
+    width:100%;
+    height: 55px;
+    align-items: center;
+    justify-content: center;
+    background: url() no-repeat 50% 50%;
+    background-size: cover;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+#main #section2 .right .container .content ul li:nth-child(1) a {
+    background-image: url(../../../../public/images/image2.jpg);
+}
+#main #section2 .right .container .content ul li:nth-child(2) a {
+    background-image: url(../../../../public/images/image.jpg);
+}
+#main #section2 .right .container .content ul li:nth-child(3) a {
+    background-image: url(../../../../public/images/image3.jpg);
+}
